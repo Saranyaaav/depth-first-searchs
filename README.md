@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: Saranya V</h3>
+<h3>Register Number: 212223040188</h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -87,6 +87,50 @@ F H <BR>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
+
+### Program:
+```
+from collections import defaultdict
+import networkx as nx
+import matplotlib.pyplot as plt
+
+graph=defaultdict(list)
+G=nx.Graph()
+nodes,edges=map(int,input().split())
+for i in range(edges):
+    u,v=map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+    G.add_edge(u,v)
+nx.draw(G, with_labels=True, node_color="lightblue", edge_color="red", width=2, node_size=2000)
+plt.show()
+print(graph)
+
+#Depth First Search
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+
+    return path
+
+# input start node
+start = input()
+
+path = []
+visited = defaultdict(bool)
+traversepath = dfs(graph, start, visited, path)
+print("Depth First Search:")
+print(traversepath)
+```
+
+### Output:
+<img width="1341" height="658" alt="image" src="https://github.com/user-attachments/assets/48d25239-6865-4219-8c55-e8f6e7230bf6" />
+<img width="782" height="265" alt="image" src="https://github.com/user-attachments/assets/c3f36e10-d0a4-402b-8467-e67a6f7df782" />
+
 
 <hr>
 <h3>Result:</h3>
